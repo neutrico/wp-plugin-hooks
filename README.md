@@ -1,20 +1,20 @@
 # WordPress plugin development git hooks
 
-This is a collection of git hooks to be used in conjunction with git-flow AVH 
+This is a collection of git hooks to be used in conjunction with git-flow AVH
 edition.
 
 It also has some standard git hooks that were originally created by [Sitebase](https://github.com/Sitebase/git-hooks).
 I just adjusted their code to make it work for me.
 
 These hooks are used by me for development of WordPress plugins.
- 
+
 ## Installation
 * Clone the repository
-* Install using `make`, by default the software will be installed 
-in `/opt/wp-plugin-hooks`.
-* Copy or link the /opt/wp-plugin-hooks to .git/hooks directory in your git repository
-* Copy the file hooks_config.sample to the .git directory, naming it hooks_config.
-* Modify the hooks_config file as needed.
+* Install using `make`, by default the software will be installed
+in `~/.config/git/wp-plugin/`.
+* In project dir run: 'git config --local init.templatedir ~/.config/git/wp-plugin/
+
+* Modify the hooks_config file as needed (set MAINFILE to plugin name)
 
 ## Requirements
 * git-flow AVH edition
@@ -25,24 +25,24 @@ in `/opt/wp-plugin-hooks`.
 
 ## Information
 
-* When you start a release you can omit the version number. The filter will grep 
+* When you start a release you can omit the version number. The filter will grep
   the version set in the stable info of the master branch and increase the patch level.
 * You can't commit on a master branch.
 * You can't commit files with merge markers.
 * Commit messages shorter than 8 are not allowed.
-  
+
 ## hooks_config file
-This file has the function for updating the version number in your project. You 
-need to change the variable MAINFILE to identify the file containing the 
+This file has the function for updating the version number in your project. You
+need to change the variable MAINFILE to identify the file containing the
 mandatory WordPress meta information,
 
-* If you keep track of your version somewhere else than the main file and the 
+* If you keep track of your version somewhere else than the main file and the
   readme.txt, you need to make these changes in the function _update_version.
-* There is no need to change the version for the stable tag in this file. This 
+* There is no need to change the version for the stable tag in this file. This
   will be taking care of when you finish a release or hotfix.
-  
+
 ## WordPress meta information
-Unlike the codex describes, I use a different comment system for the meta 
+Unlike the codex describes, I use a different comment system for the meta
 information.
 ```
 /**
@@ -50,12 +50,12 @@ information.
  * Plugin URI:
  * Description:
  * Version: 0.0.0
- * Author: 
- * Author URI: 
+ * Author:
+ * Author URI:
  *
 */
 ```
-You can add or remove meta information but you need to keep the Version tag, 
+You can add or remove meta information but you need to keep the Version tag,
 with a space behind the colon.
 
 ## readme.txt
@@ -79,4 +79,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
